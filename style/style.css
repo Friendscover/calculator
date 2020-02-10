@@ -1,0 +1,22 @@
+p {
+    color: white;
+    font-size: 20px;
+    text-align: center;
+}
+
+body {
+    background-color: grey;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    width: auto;
+    justify-content: center;
+    margin: 200px 200px;
+}
+
+button {
+    flex: 1 0 30%;
+    margin: 3px;
+}
