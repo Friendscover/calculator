@@ -6,6 +6,10 @@ p {
 
 body {
     background-color: grey;
+    border: 1px solid black;
+    max-width: 500px;
+    margin: auto;
+    margin-top: 80px;
 }
 
 .numberContainer, .calcContainer, .equalContainer, .clearContainer {
@@ -21,23 +25,31 @@ button {
     margin: 3px;
     border-radius: 10px;
     border-color: black;
-    max-width: 200px;
     height: 60px;
+    max-width: 80px;
 }
 
 #btnclear {
-    width: 100px;
-    flex: 0 0 30%;
+    max-width: 200px;
+    align-self: flex-end;
 }
 
 button:hover {
     background-color: honeydew;
 }
 
+#btnequals {
+    max-width: 55%;
+}
+
 .resultscreen {
     display: flex;
     justify-content: center;
     width: auto;
+}
+
+.clearContainer {
+    justify-content: flex-end;
 }
 
 #result {

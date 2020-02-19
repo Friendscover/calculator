@@ -43,29 +43,33 @@ function divide (x, y)
     return (x / y);
 }
 
-let firstValue = "";
-let operation ="";
+let calcArray = [];
+let operationArray = [];
+let tempVarToArray = ""
 
 //button event listener 
 const numberButtons = document.querySelectorAll(".numberContainer button");
 numberButtons.forEach((button) => {
     button.addEventListener("click", (e) => {
         fillInputField(button.id)
+        tempVarToArray = tempVarToArray + button.id
     });
 });
 
 const calcButtons = document.querySelectorAll(".calcContainer button");
 calcButtons.forEach((button) => {
     button.addEventListener("click", (e) => {
-        firstValue = parseInt(getInputFieldValue())
-        clearInput()
-        operation = button.id
+        addToCalcArray()
+        fillInputField(button.id)
+        operationArray.push(button.id)
     });
 });
 
 const resultButton = document.querySelector(".equalContainer button");
 resultButton.addEventListener("click", () => {
-    updateTextInput(decideOperator(operation, firstValue, parseInt(getInputFieldValue())))
+    addToCalcArray()
+    updateTextInput(calcResult())
+    //updateTextInput(decideOperator(operation, firstValue, parseInt(getInputFieldValue())))
 });
 
 const clearButton = document.querySelector(".clearContainer button");
@@ -77,11 +81,8 @@ clearButton.addEventListener("click" , () => {
 function fillInputField(id)
 {
     let inputValue = getInputFieldValue();
-    if(id == 1 || 2 || 3 || 4 || 5 || 6 || 7 || 8 || 9)
-    {
-        inputValue = inputValue + id; 
-        updateTextInput(inputValue);
-    }
+    inputValue = inputValue + id; 
+    updateTextInput(inputValue);
 }
 
 function updateTextInput(value)
@@ -92,9 +93,44 @@ function updateTextInput(value)
 function clearInput()
 {
     document.getElementById("result").value = "";
+    calcArray = [];
+    operationArray = [];
+    tempVarToArray = [];
 }
 
 function getInputFieldValue()
 {
     return document.getElementById("result").value;
+}
+
+//push temp Value to Array
+function addToCalcArray()
+{
+    if(tempVarToArray == "")
+    {
+        calcArray.push(getInputFieldValue());
+    }
+    else
+    {
+        calcArray.push(parseInt(tempVarToArray));
+        tempVarToArray = "";
+    }
+}
+
+function calcResult()
+{
+    let firstValue = parseInt(calcArray.shift());
+    for(i = 0; i <= calcArray.length; i++)
+    {
+        let currentOperation = operationArray.shift();
+        firstValue = decideOperator(currentOperation, firstValue, parseInt(calcArray.shift()));
+    }
+    if(!isFinite(firstValue))
+    {
+        return "Oops. Something went wrong!"
+    }
+    else
+    {
+        return firstValue;
+    }
 }
