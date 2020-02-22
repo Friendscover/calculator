@@ -1,12 +1,18 @@
 p {
-    color: rgb(0, 0, 0);
     font-size: 25px;
     text-align: center;
+    color: black;
 }
 
+.calculator {
+    background-color: rgb(255, 194, 80);
+    border: 5px solid rgb(255, 194, 80);
+    border-radius: 10px;
+}
+
+
 body {
-    background-color: grey;
-    border: 1px solid black;
+    background-color: rgb(255, 242, 212);
     max-width: 500px;
     margin: auto;
     margin-top: 80px;
@@ -17,25 +23,27 @@ body {
     flex-wrap: wrap;
     width: auto;
     justify-content: center;
-   
 }
 
 button {
     flex: 1 0 30%;
     margin: 3px;
     border-radius: 10px;
-    border-color: black;
     height: 60px;
     max-width: 80px;
+    background-color: #b0c4de;
+    font-size: 15px;
 }
 
 #btnclear {
     max-width: 200px;
     align-self: flex-end;
+    margin-bottom: 10px;
+    margin-right: 10px;
 }
 
 button:hover {
-    background-color: honeydew;
+    background-color: #cee2fa;
 }
 
 #btnequals {
@@ -53,6 +61,26 @@ button:hover {
 }
 
 #result {
-    min-width: 40%;
+    size: 10px;
+    min-width: 50%;
     margin-bottom: 20px;
+    border: 3px white solid;
+    border-radius: 20px;
+    min-height: 20%;
+    text-align: center;
+    font-size: 15px;
 }
+
+a {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 2px;
+}
+
+a:link, a:visited {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+} 

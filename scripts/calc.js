@@ -69,7 +69,6 @@ const resultButton = document.querySelector(".equalContainer button");
 resultButton.addEventListener("click", () => {
     addToCalcArray()
     updateTextInput(calcResult())
-    //updateTextInput(decideOperator(operation, firstValue, parseInt(getInputFieldValue())))
 });
 
 const clearButton = document.querySelector(".clearContainer button");
@@ -125,6 +124,7 @@ function calcResult()
         let currentOperation = operationArray.shift();
         firstValue = decideOperator(currentOperation, firstValue, parseInt(calcArray.shift()));
     }
+    
     if(!isFinite(firstValue))
     {
         return "Oops. Something went wrong!"
